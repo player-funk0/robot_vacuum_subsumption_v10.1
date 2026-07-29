@@ -57,18 +57,15 @@ Designed for **robotics competitions** and **home hacking**, the robot features:
 
 ## 🏗️ Architecture
 
-```mermaid
-flowchart TD
-    A[LAYER 3.6: Battery Safety] -->|suppresses| B[LAYER 3.5: Pickup / Flip]
-    B -->|suppresses| C[LAYER 3: Survival]
-    C -->|suppresses| D[LAYER 2.5: Stuck Escape]
-    D -->|suppresses| E[LAYER 2: Avoidance]
-    E -->|suppresses| F[LAYER 1.5: Wall Following]
-    F -->|suppresses| G[LAYER 1.2: Boustrophedon]
-    G -->|suppresses| H[LAYER 1: Cruise & Clean]
-
-    style A fill:#ff4444,stroke:#333,stroke-width:2px,color:#fff
-    style H fill:#44ff44,stroke:#333,stroke-width:2px,color:#000
+```
+LAYER 3.6 ◄ BATTERY SAFETY      — absolute hardware protection
+LAYER 3.5 ◄ PICKUP / FLIP       — motors off if robot is lifted
+LAYER 3   ◄ SURVIVAL            — cliff + critical obstacle (<10cm)
+LAYER 2.5 ◄ STUCK ESCAPE        — wheel-slip self-rescue
+LAYER 2   ◄ AVOIDANCE           — forward obstacle (10-25cm)
+LAYER 1.5 ◄ WALL FOLLOWING      — systematic edge coverage
+LAYER 1.2 ◄ BOUSTROPHEDON       — row-by-row systematic coverage
+LAYER 1   ◄ CRUISE & CLEAN      — forward motion + spiral + bias
 ```
 
 **Design principle:** Each layer is an independent `bool` function. If a layer returns `true`, it suppresses every layer below it for that `loop()` iteration. No scheduler, no RTOS tasks, no shared state beyond sensor data — simple, fast, and deterministic.
@@ -418,6 +415,20 @@ The robot performs a 2-second stationary gyro calibration at boot. **Keep the ro
 | **v7.1** | Sensor NaN guard, BLE command atomicity (`std::atomic`), wall-follow gain compensation |
 | **v7.0** | BLE telemetry, IMU integration, wall following, anti-pattern detection, pickup/flip detection |
 | **v6.x** | Subsumption architecture baseline, IR cliff sensors, ultrasonic ISR pipeline |
+
+---
+
+## 🏁 Competition Checklist
+
+- [ ] All ultrasonic sensors responding (self-test pass)
+- [ ] IR cliff sensors reading floor correctly
+- [ ] IMU calibrated (robot stationary at boot)
+- [ ] Battery > 11.5 V at start
+- [ ] GPIO 12 has 10 kΩ pull-down
+- [ ] `VERBOSE_DEBUG` commented out (saves CPU cycles)
+- [ ] `ENABLE_COMPETITION_TIMER` enabled
+- [ ] BLE connected to phone for live telemetry
+- [ ] NVS stats reviewed (no abnormal WDT/brownout counts)
 
 ---
 
