@@ -3,7 +3,6 @@
 [![Platform](https://img.shields.io/badge/Platform-ESP32-blue.svg)](https://www.espressif.com/en/products/socs/esp32)
 [![Framework](https://img.shields.io/badge/Framework-Arduino-orange.svg)](https://github.com/espressif/arduino-esp32)
 [![Architecture](https://img.shields.io/badge/Architecture-Subsumption-success.svg)](https://en.wikipedia.org/wiki/Subsumption_architecture)
-[![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
 > **Obrynex Edition** — A competition-grade autonomous vacuum robot built on the ESP32 NodeMCU, implementing Rodney Brooks' subsumption architecture with IMU-guided precision navigation, systematic boustrophedon coverage, BLE telemetry, and real-time occupancy mapping.
 
