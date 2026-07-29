@@ -414,21 +414,7 @@ The robot performs a 2-second stationary gyro calibration at boot. **Keep the ro
 | **v7.2** | L298N thermal derating, competition timer, dead reckoning, coverage grid with 70/30 bias |
 | **v7.1** | Sensor NaN guard, BLE command atomicity (`std::atomic`), wall-follow gain compensation |
 | **v7.0** | BLE telemetry, IMU integration, wall following, anti-pattern detection, pickup/flip detection |
-| **v6.x** | Subsumption architecture baseline, IR cliff sensors, ultrasonic ISR pipeline |
-
----
-
-## 🏁 Competition Checklist
-
-- [ ] All ultrasonic sensors responding (self-test pass)
-- [ ] IR cliff sensors reading floor correctly
-- [ ] IMU calibrated (robot stationary at boot)
-- [ ] Battery > 11.5 V at start
-- [ ] GPIO 12 has 10 kΩ pull-down
-- [ ] `VERBOSE_DEBUG` commented out (saves CPU cycles)
-- [ ] `ENABLE_COMPETITION_TIMER` enabled
-- [ ] BLE connected to phone for live telemetry
-- [ ] NVS stats reviewed (no abnormal WDT/brownout counts)
+| **v6.x** | Subsumption architecture baseline, IR cliff sensors, ultrasonic ISR pipeline 
 
 ---
 
