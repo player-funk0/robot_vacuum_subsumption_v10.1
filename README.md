@@ -57,7 +57,7 @@ Designed for **robotics competitions** and **home hacking**, the robot features:
 
 ## 🏗️ Architecture
 
-```
+```mermaid
 flowchart TD
     A[LAYER 3.6: Battery Safety] -->|suppresses| B[LAYER 3.5: Pickup / Flip]
     B -->|suppresses| C[LAYER 3: Survival]
@@ -69,7 +69,6 @@ flowchart TD
 
     style A fill:#ff4444,stroke:#333,stroke-width:2px,color:#fff
     style H fill:#44ff44,stroke:#333,stroke-width:2px,color:#000
-
 ```
 
 **Design principle:** Each layer is an independent `bool` function. If a layer returns `true`, it suppresses every layer below it for that `loop()` iteration. No scheduler, no RTOS tasks, no shared state beyond sensor data — simple, fast, and deterministic.
@@ -418,7 +417,21 @@ The robot performs a 2-second stationary gyro calibration at boot. **Keep the ro
 | **v7.2** | L298N thermal derating, competition timer, dead reckoning, coverage grid with 70/30 bias |
 | **v7.1** | Sensor NaN guard, BLE command atomicity (`std::atomic`), wall-follow gain compensation |
 | **v7.0** | BLE telemetry, IMU integration, wall following, anti-pattern detection, pickup/flip detection |
-| **v6.x** | Subsumption architecture baseline, IR cliff sensors, ultrasonic ISR pipeline 
+| **v6.x** | Subsumption architecture baseline, IR cliff sensors, ultrasonic ISR pipeline |
+
+---
+
+## 🏁 Competition Checklist
+
+- [ ] All ultrasonic sensors responding (self-test pass)
+- [ ] IR cliff sensors reading floor correctly
+- [ ] IMU calibrated (robot stationary at boot)
+- [ ] Battery > 11.5 V at start
+- [ ] GPIO 12 has 10 kΩ pull-down
+- [ ] `VERBOSE_DEBUG` commented out (saves CPU cycles)
+- [ ] `ENABLE_COMPETITION_TIMER` enabled
+- [ ] BLE connected to phone for live telemetry
+- [ ] NVS stats reviewed (no abnormal WDT/brownout counts)
 
 ---
 
