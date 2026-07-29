@@ -422,26 +422,6 @@ The robot performs a 2-second stationary gyro calibration at boot. **Keep the ro
 
 ---
 
-## 🏁 Competition Checklist
-
-- [ ] All ultrasonic sensors responding (self-test pass)
-- [ ] IR cliff sensors reading floor correctly
-- [ ] IMU calibrated (robot stationary at boot)
-- [ ] Battery > 11.5 V at start
-- [ ] GPIO 12 has 10 kΩ pull-down
-- [ ] `VERBOSE_DEBUG` commented out (saves CPU cycles)
-- [ ] `ENABLE_COMPETITION_TIMER` enabled
-- [ ] BLE connected to phone for live telemetry
-- [ ] NVS stats reviewed (no abnormal WDT/brownout counts)
-
----
-
-## 📜 License
-
-This project is released under the **MIT License**. Free for educational, competition, and commercial use. Attribution appreciated.
-
----
-
 ## 🙏 Acknowledgements
 
 - **Rodney Brooks** — Subsumption Architecture (1986)
