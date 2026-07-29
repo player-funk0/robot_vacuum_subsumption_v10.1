@@ -69,6 +69,7 @@ flowchart TD
 
     style A fill:#ff4444,stroke:#333,stroke-width:2px,color:#fff
     style H fill:#44ff44,stroke:#333,stroke-width:2px,color:#000
+
 ```
 
 **Design principle:** Each layer is an independent `bool` function. If a layer returns `true`, it suppresses every layer below it for that `loop()` iteration. No scheduler, no RTOS tasks, no shared state beyond sensor data — simple, fast, and deterministic.
